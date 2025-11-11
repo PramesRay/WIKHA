@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { services } from '../mockData';
 import { ServiceCard } from '../components/ServiceCard';
+import { ServiceModal } from '../components/ServiceModal';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import '../styles/Services.css';
 
 export const Services = () => {
+  const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedService(null), 300);
+  };
+
   return (
     <div className="services-page">
       {/* Hero Section */}
       <section className="services-hero">
         <div className="container">
-          <h1 className="page-title">OUR SERVICES</h1>
+          <h1 className="page-title">Pilih Kebutuhan Kamu!</h1>
           <p className="page-subtitle">
             From concept to completion, we offer comprehensive design and printing solutions tailored to your needs
           </p>
@@ -23,12 +37,14 @@ export const Services = () => {
         <div className="container">
           <div className="services-grid">
             {services.map((service) => (
-              <ServiceCard
-                key={service.id}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-              />
+              <div key={service.id} onClick={() => handleServiceClick(service)}>
+                <ServiceCard
+                  title={service.serviceName}
+                  description={service.shortDescription.join(' • ')}
+                  icon={service.icon}
+                  price={service.price}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -1,19 +1,39 @@
-/* Services Page Styles */
+/* Services Page Styles - Updated Design */
 .services-page {
   min-height: 100vh;
 }
 
 /* Hero Section */
 .services-hero {
-  background: var(--bg-page);
+  background: var(--bg-dark-blue);
   padding: 140px 40px 80px;
   text-align: center;
 }
 
+.page-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  color: var(--text-white);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 /* Services Grid Section */
 .services-grid-section {
-  padding: 96px 40px;
-  background: var(--bg-page);
+  padding: 80px 40px;
+  background: var(--bg-white);
 }
 
 .services-grid {
@@ -24,8 +44,8 @@
 
 /* Process Section */
 .process-section {
-  padding: 96px 40px;
-  background: var(--bg-card);
+  padding: 80px 40px;
+  background: var(--gray-light);
 }
 
 .process-timeline {
@@ -40,53 +60,107 @@
   flex-direction: column;
   gap: 20px;
   position: relative;
+  padding: 24px;
+  background: var(--bg-white);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(58, 125, 255, 0.15);
 }
 
 .step-number {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--brand-primary);
-  color: var(--text-inverse);
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--accent-bright-blue);
+  color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .process-step:hover .step-number {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.1);
+  background: #2868e6;
 }
 
 .step-title {
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.2;
-  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--bg-dark-blue);
   margin: 0;
 }
 
 .step-description {
-  font-family: 'Inter', Arial, sans-serif;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
+  line-height: 1.6;
+  color: var(--text-gray);
   margin: 0;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: var(--bg-dark-blue);
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-gray);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* CTA Section */
 .services-cta-section {
-  padding: 120px 40px;
-  background: var(--bg-page);
+  padding: 100px 40px;
+  background: var(--bg-dark-blue);
 }
 
 .services-cta-content {
   text-align: center;
+}
+
+.cta-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  color: var(--text-white);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.cta-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile Responsive */
@@ -110,11 +184,11 @@
 
   .process-timeline {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
     margin-top: 40px;
   }
 
   .services-cta-section {
-    padding: 80px 20px;
+    padding: 60px 20px;
   }
 }

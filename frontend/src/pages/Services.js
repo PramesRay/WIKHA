@@ -108,6 +108,13 @@ export const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Service Modal */}
+      <ServiceModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        service={selectedService}
+      />
     </div>
   );
 };

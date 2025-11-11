@@ -2,56 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pixel Pushers Design System Colors */
+/* Import Poppins & Inter fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+/* New Color System */
 :root {
-  /* Backgrounds - Exact Pixel Pushers Colors */
-  --bg-page: #1a1c1b;
-  --bg-card: #302f2c;
-  --bg-light: #dfddd6;
-  
-  /* Text - Exact Pixel Pushers Colors */
-  --text-primary: #d9fb06;
-  --text-secondary: #888680;
-  --text-muted: #302f2c;
-  --text-inverse: #1a1c1b;
-  
-  /* Borders - Exact Pixel Pushers Colors */
-  --border-light: rgba(63, 72, 22, 0.5);
-  --border-medium: #3f4816;
-  --border-strong: #888680;
-  
-  /* Brand Colors */
-  --brand-primary: #d9fb06;
-  --brand-hover: rgba(217, 251, 6, 0.8);
-  --brand-active: rgba(217, 251, 6, 0.6);
+  /* Primary Colors */
+  --bg-dark-blue: #0A2540;
+  --accent-bright-blue: #3A7DFF;
+  --highlight-yellow: #F7D046;
+  --bg-white: #FFFFFF;
+  --text-white: #FFFFFF;
+  --text-dark: #0A2540;
+  --text-gray: #333333;
   
   /* Supporting Colors */
-  --secondary-olive: #3f4816;
-  --secondary-yellow: #f8d47a;
-  --secondary-blue: #0073e6;
-  --neutral-white: white;
-  --neutral-light: #dfddd6;
-
+  --gray-light: #F8F9FA;
+  --gray-medium: #6C757D;
+  --overlay-dark: rgba(10, 37, 64, 0.9);
+  
   /* Shadcn compatibility */
-  --background: 26 7% 11%;
-  --foreground: 75 98% 50%;
-  --card: 33 5% 19%;
-  --card-foreground: 75 98% 50%;
-  --popover: 26 7% 11%;
-  --popover-foreground: 75 98% 50%;
-  --primary: 75 98% 50%;
-  --primary-foreground: 26 7% 11%;
-  --secondary: 47 35% 17%;
-  --secondary-foreground: 75 98% 50%;
-  --muted: 47 35% 17%;
-  --muted-foreground: 36 5% 53%;
-  --accent: 47 35% 17%;
-  --accent-foreground: 75 98% 50%;
+  --background: 210 80% 15%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 80% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 80% 15%;
+  --primary: 216 100% 61%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 80% 15%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 20% 92%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 216 100% 61%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-  --border: 47 35% 17%;
-  --input: 47 35% 17%;
-  --ring: 75 98% 50%;
+  --border: 210 20% 85%;
+  --input: 210 20% 85%;
+  --ring: 216 100% 61%;
   --radius: 0.5rem;
 }
 
@@ -63,19 +52,48 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg-page);
-  color: var(--text-primary);
-  line-height: 1.5;
+  background: var(--bg-white);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+p, li, span {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 /* Smooth scrolling */
@@ -85,13 +103,13 @@ html {
 
 /* Selection color */
 ::selection {
-  background: var(--brand-primary);
-  color: var(--text-inverse);
+  background: var(--accent-bright-blue);
+  color: var(--text-white);
 }
 
 /* Focus states */
 *:focus-visible {
-  outline: 2px solid var(--brand-primary);
+  outline: 2px solid var(--accent-bright-blue);
   outline-offset: 2px;
 }
 
@@ -114,36 +132,4 @@ img {
   body {
     @apply bg-background text-foreground;
   }
-}
-
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
-
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit;
-        margin-right: inherit;
-        margin-top: inherit;
-        margin-bottom: inherit;
-        padding-left: inherit;
-        padding-right: inherit;
-        padding-top: inherit;
-        padding-bottom: inherit;
-        column-gap: inherit;
-        row-gap: inherit;
-        gap: inherit;
-        border-left-width: inherit;
-        border-right-width: inherit;
-        border-top-width: inherit;
-        border-bottom-width: inherit;
-        border-left-style: inherit;
-        border-right-style: inherit;
-        border-top-style: inherit;
-        border-bottom-style: inherit;
-        border-left-color: inherit;
-        border-right-color: inherit;
-        border-top-color: inherit;
-        border-bottom-color: inherit;
-    }
 }
